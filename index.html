@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>BESFİT QR Menü</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+    .qr {
+      width: 200px;
+      height: 200px;
+    }
+    p.small {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>BESFİT MENÜSÜNE ERİŞMEK İÇİN QR KODU OKUTUN</h1>
+
+  <!-- Buradaki URL, sizin GitHub Pages’te yayınladığınız menü sayfanız olmalı -->
+  <img
+    class="qr"
+    src="https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=https://ahmetbrkkaya.github.io/menu/"
+    alt="BESFİT Menü QR Kodu"
+  >
+
+  <p class="small">Kameranızı QR kodun üzerine tutarak menüyü görüntüleyin.</p>
+</body>
+</html>
