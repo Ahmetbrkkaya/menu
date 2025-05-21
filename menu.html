@@ -3,67 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <title>Lezzet Durağı Menüsü</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      padding: 20px; 
-      max-width: 600px; 
+    :root {
+      --bg: #f4f7fa;
+      --card-bg: #ffffff;
+      --primary: #ff6b6b;
+      --text: #333333;
+      --muted: #777777;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 800px;
       margin: auto;
-      background: #fafafa;
-      color: #333;
     }
-    h1 { 
-      text-align: center; 
-      margin-bottom: 30px;
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
     }
-    h2 {
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 5px;
-      margin-top: 30px;
-      color: #555;
+
+    .menu-section {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 8px var(--shadow);
+      margin-bottom: 2rem;
+      overflow: hidden;
+      transition: transform .2s;
     }
-    ul { list-style: none; padding: 0; }
-    li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #eee; }
-    .item { font-weight: bold; }
-    .price { color: #999; }
+    .menu-section:hover {
+      transform: translateY(-4px);
+    }
+
+    .menu-section h2 {
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #eee;
+      transition: background .2s;
+    }
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+    .menu-item:hover {
+      background: var(--bg);
+    }
+
+    .menu-item .item {
+      font-weight: 500;
+    }
+    .menu-item .price {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    @media (max-width: 500px) {
+      .menu-items {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Lezzet Durağı Menüsü</h1>
+  <div class="container">
+    <h1>Lezzet Durağı Menüsü</h1>
 
-  <h2>Başlangıçlar</h2>
-  <ul>
-    <li><span class="item">Humus</span><span class="price">₺30</span></li>
-    <li><span class="item">Sigara Böreği (5 Adet)</span><span class="price">₺25</span></li>
-    <li><span class="item">Patates Kızartması</span><span class="price">₺20</span></li>
-  </ul>
+    <section class="menu-section">
+      <h2>Başlangıçlar</h2>
+      <div class="menu-items">
+        <div class="menu-item"><span class="item">Humus</span><span class="price">₺30</span></div>
+        <div class="menu-item"><span class="item">Sigara Böreği (5 Adet)</span><span class="price">₺25</span></div>
+        <div class="menu-item"><span class="item">Patates Kızartması</span><span class="price">₺20</span></div>
+      </div>
+    </section>
 
-  <h2>Çorbalar</h2>
-  <ul>
-    <li><span class="item">Mercimek Çorbası</span><span class="price">₺25</span></li>
-    <li><span class="item">Domates Çorbası</span><span class="price">₺22</span></li>
-    <li><span class="item">Yayla Çorbası</span><span class="price">₺28</span></li>
-  </ul>
+    <section class="menu-section">
+      <h2>Çorbalar</h2>
+      <div class="menu-items">
+        <div class="menu-item"><span class="item">Mercimek Çorbası</span><span class="price">₺25</span></div>
+        <div class="menu-item"><span class="item">Domates Çorbası</span><span class="price">₺22</span></div>
+        <div class="menu-item"><span class="item">Yayla Çorbası</span><span class="price">₺28</span></div>
+      </div>
+    </section>
 
-  <h2>Ana Yemekler</h2>
-  <ul>
-    <li><span class="item">Izgara Tavuk Şiş</span><span class="price">₺60</span></li>
-    <li><span class="item">Adana Kebap</span><span class="price">₺65</span></li>
-    <li><span class="item">Sebzeli Lazanya</span><span class="price">₺55</span></li>
-  </ul>
+    <section class="menu-section">
+      <h2>Ana Yemekler</h2>
+      <div class="menu-items">
+        <div class="menu-item"><span class="item">Izgara Tavuk Şiş</span><span class="price">₺60</span></div>
+        <div class="menu-item"><span class="item">Adana Kebap</span><span class="price">₺65</span></div>
+        <div class="menu-item"><span class="item">Sebzeli Lazanya</span><span class="price">₺55</span></div>
+      </div>
+    </section>
 
-  <h2>Tatlılar</h2>
-  <ul>
-    <li><span class="item">Baklava</span><span class="price">₺35</span></li>
-    <li><span class="item">Sütlaç</span><span class="price">₺30</span></li>
-    <li><span class="item">Kazandibi</span><span class="price">₺32</span></li>
-  </ul>
+    <section class="menu-section">
+      <h2>Tatlılar</h2>
+      <div class="menu-items">
+        <div class="menu-item"><span class="item">Baklava</span><span class="price">₺35</span></div>
+        <div class="menu-item"><span class="item">Sütlaç</span><span class="price">₺30</span></div>
+        <div class="menu-item"><span class="item">Kazandibi</span><span class="price">₺32</span></div>
+      </div>
+    </section>
 
-  <h2>İçecekler</h2>
-  <ul>
-    <li><span class="item">Ayran</span><span class="price">₺10</span></li>
-    <li><span class="item">Kola (330 ml)</span><span class="price">₺15</span></li>
-    <li><span class="item">Taze Sıkma Portakal Suyu</span><span class="price">₺25</span></li>
-  </ul>
+    <section class="menu-section">
+      <h2>İçecekler</h2>
+      <div class="menu-items">
+        <div class="menu-item"><span class="item">Ayran</span><span class="price">₺10</span></div>
+        <div class="menu-item"><span class="item">Kola (330 ml)</span><span class="price">₺15</span></div>
+        <div class="menu-item"><span class="item">Taze Sıkma Portakal Suyu</span><span class="price">₺25</span></div>
+      </div>
+    </section>
+  </div>
 </body>
 </html>
