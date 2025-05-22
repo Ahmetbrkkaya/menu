@@ -1,258 +1,303 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>BESFİT Menüsü</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --dark-bg: #173e28;
+      --dark-bg: #1b2d1f;
       --accent: #8cc63f;
-      --light-text: #f2e8cf;
+      --light-text: #f2f1ec;
       --white: #ffffff;
-      --shadow: rgba(0, 0, 0, 0.2);
+      --card-bg: #2b3a2f;
+      --shadow: rgba(0, 0, 0, 0.4);
+      --transition: 0.3s ease;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Poppins', sans-serif;
       background: var(--dark-bg);
       color: var(--light-text);
-      line-height: 1.5;
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
-    .banner {
-      text-align: center;
-      padding: 3rem 1rem;
-    }
-    .banner h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-    .intro {
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      padding: 0 1rem;
-      text-align: center;
-      font-size: 1.1rem;
-    }
-    .intro p { margin-bottom: 1rem; }
-    .section {
-      padding: 2rem 1rem;
-      max-width: 850px;
-      margin: 0 auto;
-    }
-    .section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .items {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .item {
-      display: flex;
-      background: var(--dark-bg);
-      border: 2px solid var(--accent);
-      border-radius: 16px;
-      box-shadow: 0 4px 8px var(--shadow);
-      overflow: hidden;
-    }
-    .item-image {
-      flex-shrink: 0;
-      width: 140px;
-      height: 140px;
-      background: var(--accent);
-      border-top-left-radius: 14px;
-      border-bottom-left-radius: 14px;
-    }
-    .item-content {
-      padding: 1rem 1.5rem;
-      flex: 1;
-    }
-    .item-content h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.75rem;
-      color: var(--white);
-      font-weight: 600;
-    }
-    .item-content ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .item-content ul li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-    .item-content ul li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: var(--white);
-      font-size: 1.2rem;
-      line-height: 1;
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
       top: 0;
+      width: 100%;
+      background: rgba(27,45,31,0.8);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
+    .navbar h1 { font-family: 'Montserrat', sans-serif; color: var(--accent); font-size: 1.5rem; }
+    .navbar a { color: var(--light-text); margin-left: 1rem; font-weight: 500; }
+
+    /* MODAL */
+    .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75);
+      display: flex; align-items: center; justify-content: center; z-index: 1000; }
+    .modal-content { background: var(--card-bg); padding: 2rem; border-radius: 12px;
+      text-align: center; max-width: 90%; animation: fadeIn 0.5s ease; }
+    .modal-content h2 { font-family: 'Montserrat', sans-serif; font-size: 2.5rem;
+      margin-bottom: 1rem; color: var(--accent); }
+    .modal-content button { margin-top: 1.5rem; padding: 0.75rem 1.5rem;
+      border: none; border-radius: 6px; background: var(--accent);
+      color: var(--dark-bg); font-size: 1rem; cursor: pointer;
+      transition: background var(--transition); }
+    .modal-content button:hover { background: #7ab334; }
+    @keyframes fadeIn { from { opacity:0; transform:scale(0.9);} to{ opacity:1; transform:scale(1);} }
+
+    /* HERO */
+    .hero { position: relative; width: 100%; height: 100vh;
+      background: linear-gradient(rgba(27,45,31,0.6), rgba(27,45,31,0.6)),
+        url('resim/IMG-20250522-WA0004.jpg') center/cover no-repeat;
+      display: flex; align-items: center; justify-content: center; }
+    .hero-content { position: relative; text-align: center; z-index: 1; }
+    .hero-content h1 { font-family: 'Montserrat', sans-serif;
+      font-size: 3rem; font-weight: 700; color: var(--white);
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7); }
+
+    /* INTRO */
+    .intro { text-align: center; padding: 2rem 1rem; max-width: 800px;
+      margin: -40vh auto 4rem; background: rgba(27,45,31,0.85);
+      backdrop-filter: blur(5px); border-radius: 8px;
+      box-shadow: 0 8px 24px var(--shadow);
+      position: relative; z-index: 2; }
+    .intro p { margin-bottom: 1rem; font-size:1rem; }
+
+    /* SECTIONS */
+    .section { padding:3rem 1rem; max-width:1000px; margin:0 auto; }
+    .section h2 { font-family: 'Montserrat', sans-serif; font-size:2.2rem;
+      margin-bottom:2rem; color:var(--accent); text-align:center;
+      letter-spacing:1px; }
+    .items { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2.5rem; }
+
+    /* CARD STYLE */
+    .item { background: var(--card-bg); border-radius:12px;
+      box-shadow:0 8px 24px var(--shadow); overflow:hidden;
+      transition:transform var(--transition),box-shadow var(--transition); }
+    .item:hover { transform:translateY(-10px); box-shadow:0 16px 32px var(--shadow); }
+    .item-image { width:100%; height:200px; overflow:hidden; position:relative; }
+    .item-image img { width:100%; height:100%; object-fit:cover;
+      transition:transform var(--transition);}    
+    .item:hover .item-image img { transform:scale(1.05); }
+    .item-content { padding:1.5rem; display:flex; flex-direction:column; height:100%; }
+    .item-content h3 { font-family:'Montserrat',sans-serif; font-size:1.6rem;
+      margin-bottom:1rem; color:var(--white); }
+    .item-content ul { list-style:none; padding-left:0; flex:1; margin-bottom:1.5rem; }
+    .item-content ul li { position:relative; padding-left:1.5rem; margin-bottom:0.5rem;
+      font-size:1rem; }
+    .item-content ul li::before { content:'•'; position:absolute; left:0;
+      color:var(--accent); font-size:1.2rem; }
+    .price { font-size:2rem; font-weight:700; color:var(--accent);
+      text-align:right; margin-bottom:1rem; }
+    .order-btn { padding:0.75rem; background:var(--accent); color:var(--dark-bg);
+      border:none; border-radius:6px; cursor:pointer; font-weight:600;
+      transition:background var(--transition); }
+    .order-btn:hover { background:#7ab334; }
+
+    /* FOOTER */
+    .footer { text-align:center; padding:2rem 1rem; font-size:1rem; }
+
+    @media(max-width:768px){ .hero-content h1{font-size:2.4rem;}
+      .intro{margin-top:-30vh;} .section h2{font-size:1.8rem;}
+      .item-content h3{font-size:1.4rem;} .price{font-size:1.6rem;} }
   </style>
 </head>
 <body>
-  <section class="banner">
-    <h1>Lezzetli ve Sağlıklı</h1>
-    <h1>BESFİT MENÜSÜ</h1>
-  </section>
 
-  <section class="intro">
-    <p>🥦 Hoş Geldin BESFİT Ailesine! Burası sadece bir yemek noktası değil... Burası; sağlıklı seçimlerin, güçlü bedenlerin ve pozitif enerjinin birleştiği yer!</p>
-    <p>Her tabakta lezzet var, denge var, hedeflerine bir adım daha yaklaşma gücü var. İster formunu korumak iste, ister yeni bir başlangıç yap... Biz senin için buradayız!</p>
+  <!-- WELCOME POPUP -->
+  <div class="modal" id="welcomeModal">
+    <div class="modal-content">
+      <h2>Hoş Geldin BESFİT Ailesine!</h2>
+      <p>Lezzetli ve Sağlıklı BESFİT MENÜSÜ’ne göz atmaya hazır mısın?</p>
+      <button id="closeModal">Başla</button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Lezzetli ve Sağlıklı</h1>
+      <h1>BESFİT MENÜSÜ</h1>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>🥦 Burada sağlıklı seçimler, güçlü bedenler ve pozitif enerji buluşuyor.</p>
+    <p>Her tabakta lezzet var, denge var; hedeflerine bir adım daha yaklaşma gücü var.</p>
     <p>🔄 Her lokmada yenilen. ⚡ Her öğünde güçlen. 💚 Her gün daha iyi hisset.</p>
-  </section>
+  </div>
 
-  <!-- Besfit Sade ve Protein Mix -->
+  <!-- SECTIONS -->
   <section class="section">
     <h2>Besfit Sade & Protein Mix</h2>
     <div class="items">
       <div class="item">
-        <div class="item-image"></div>
+        <div class="item-image"><img src="resim/sade.jpg" alt="Besfit Sade"></div>
         <div class="item-content">
           <h3>Besfit Sade</h3>
           <ul>
-            <li>Portakal suyunda marine edilmiş tavuk (250g çiğ) harika bir tabak ile sağlık dengesi sağlıyor</li>
+            <li>250g Portakal marine tavuk</li>
             <li>~660 kcal</li>
             <li>~59g protein</li>
             <li>~65g karbonhidrat</li>
           </ul>
+          <p class="price">230 TL</p>
         </div>
       </div>
       <div class="item">
-        <div class="item-image"></div>
+        <div class="item-image"><img src="resim/protein.jpg" alt="Protein Mix"></div>
         <div class="item-content">
-          <h3>Besfit Protein Mix</h3>
+          <h3>Protein Mix</h3>
           <ul>
-            <li>Portakal suyunda marine edilmiş 3 çeşit tavuk (350g çiğ) harika bir tabak ile sağlık dengesi sağlıyor</li>
+            <li>350g 3 çeşit tavuk</li>
             <li>~780 kcal</li>
             <li>~80g protein</li>
             <li>~65g karbonhidrat</li>
           </ul>
+          <p class="price">300 TL</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Salatalar -->
   <section class="section">
     <h2>Salatalar</h2>
     <div class="items">
       <div class="item">
-        <div class="item-image"></div>
+        <div class="item-image"><img src="resim/çıtırtavuksalata.jpg" alt="Çıtır Tavuk Salata"></div>
         <div class="item-content">
-          <h3>Besfit Çıtır Tavuk Salata</h3>
+          <h3>Çıtır Tavuk Salata</h3>
           <ul>
-            <li>120g çıtır kaplamalı tavuk (fırınlanmış veya airfryer’da galeta unu/yulaf ezmesi ile kaplanmış)</li>
-            <li>40g karışık yeşillik (roka, marul, ıspanak)</li>
+            <li>120g çıtır kaplamalı tavuk</li>
+            <li>40g yeşillik</li>
             <li>40g cherry domates</li>
-            <li>40g salatalık</li>
-            <li>30g közlenmiş kırmızı biber</li>
-            <li>10g zeytinyağı</li>
+            <li>30g közlenmiş biber + 10g zeytinyağı</li>
           </ul>
-          <ul>
-            <li>Enerji ~420 kcal</li>
-            <li>Protein ~32g</li>
-            <li>Karbonhidrat ~15g</li>
-            <li>Yağ ~25g</li>
-            <li>Lif ~4g</li>
-          </ul>
+          <p class="price">250 TL</p>
         </div>
       </div>
       <div class="item">
-        <div class="item-image"></div>
+        <div class="item-image"><img src="resim/humus.jpg" alt="Humus Salata"></div>
         <div class="item-content">
-          <h3>Besfit Humuslu Salata</h3>
+          <h3>Humus Salata</h3>
           <ul>
-            <li>50g humus</li>
-            <li>100g haşlanmış nohut</li>
-            <li>50g karışık yeşillik</li>
-            <li>30g salatalık</li>
-            <li>30g domates</li>
-            <li>20g rendelenmiş havuç</li>
-            <li>5g zeytinyağı</li>
-            <li>5g kabak çekirdeği</li>
+            <li>50g humus, 100g nohut</li>
+            <li>50g yeşillik, sebzeler</li>
+            <li>5g zeytinyağı, 5g kabak çekirdeği</li>
           </ul>
-          <ul>
-            <li>Enerji ~400 kcal</li>
-            <li>Protein ~14g</li>
-            <li>Karbonhidrat ~32g</li>
-            <li>Yağ ~22g</li>
-            <li>Lif ~9g</li>
-          </ul>
+          <p class="price">265 TL</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Denge Tabakları -->
   <section class="section">
     <h2>Denge Tabakları</h2>
     <div class="items">
       <div class="item">
-        <div class="item-image"></div>
+        <div class="item-image"><img src="resim/fajita.jpg" alt="Fajita"></div>
         <div class="item-content">
-          <h3>Besfit Fajita Durağı</h3>
+          <h3>Fajita Durağı</h3>
           <ul>
-            <li>Portakal suyunda marine edilmiş tavuk (250g çiğ) özel fajita sosu ile buluşuyor</li>
+            <li>250g tavuk + fajita sosu</li>
             <li>~540 kcal</li>
             <li>~53g protein</li>
             <li>~65g karbonhidrat</li>
           </ul>
+          <p class="price">250 TL</p>
         </div>
       </div>
       <div class="item">
-        <div class="item-image"></div>
+        <div class="item-image"><img src="resim/mantar.jpg" alt="Zinde Mantar"></div>
         <div class="item-content">
-          <h3>Besfit Zinde Mantar</h3>
+          <h3>Zinde Mantar</h3>
           <ul>
-            <li>Portakal suyunda marine edilmiş tavuk (300g çiğ) özel tavuk sosu ve mantar ile buluşuyor</li>
+            <li>300g tavuk + mantar & sos</li>
             <li>~680 kcal</li>
             <li>~70g protein</li>
             <li>~65g karbonhidrat</li>
           </ul>
+          <p class="price">275 TL</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Ton Balık ve Akdeniz -->
   <section class="section">
-    <h2>Salatalar & Special</h2>
+    <h2>Ton Balık & Akdeniz</h2>
     <div class="items">
       <div class="item">
-        <div class="item-image"></div>
+        <div class="item-image"><img src="resim/tonbalık.jpg" alt="Ton Balık"></div>
         <div class="item-content">
-          <h3>Besfit Tonbalık</h3>
+          <h3>Ton Balık Salata</h3>
           <ul>
-            <li>Ton balık (160g), domates, salatalık, mısır, marul, lor peyniri, zeytinyağı ve limon ile eşsiz uyum</li>
+            <li>160g ton balık, sebzeler</li>
             <li>~205 kcal</li>
             <li>~34g protein</li>
             <li>~8.5g karbonhidrat</li>
           </ul>
+          <p class="price">265 TL</p>
         </div>
       </div>
       <div class="item">
-        <div class="item-image"></div>
+        <div class="item-image"><img src="resim/akdeniz.jpg" alt="Akdeniz Salata"></div>
         <div class="item-content">
-          <h3>Besfit Akdeniz</h3>
+          <h3>Akdeniz Salata</h3>
           <ul>
-            <li>Marine tavuk (120g), domates, salatalık, mısır, marul, lor peyniri, zeytinyağı ve limon ile harman</li>
+            <li>120g marine tavuk, sebzeler</li>
             <li>~205 kcal</li>
             <li>~31g protein</li>
             <li>~9g karbonhidrat</li>
           </ul>
+          <p class="price">245 TL</p>
         </div>
       </div>
     </div>
   </section>
+
+  <section class="section">
+    <h2>Fit Köfte Bowl</h2>
+    <div class="items">
+      <div class="item">
+        <div class="item-image"><img src="resim/köftebowl.jpg" alt="Fit Köfte Bowl"></div>
+        <div class="item-content">
+          <h3>Fit Köfte Bowl</h3>
+          <ul>
+            <li>120g köfte, yeşillik, lor peyniri</li>
+            <li>~354 kcal</li>
+            <li>~36g protein</li>
+            <li>~15g karbonhidrat</li>
+            <li>~15g yağ, ~4g lif</li>
+          </ul>
+          <p class="price">270 TL</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>@besfittnutrition</p>
+    <p>Paket siparişi: 0535 074 0002</p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('welcomeModal');
+      modal.style.display = 'flex';
+      document.getElementById('closeModal').addEventListener('click', () => modal.style.display = 'none');
+    });
+  </script>
 </body>
 </html>
