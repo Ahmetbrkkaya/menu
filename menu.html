@@ -2,171 +2,257 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BESFİT Menüsü</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f3f6fb;
-      --card-bg: #ffffff;
-      --primary: #2c3e50;
-      --accent: #27ae60;
-      --text: #2d3436;
-      --muted: #636e72;
-      --shadow: rgba(0, 0, 0, 0.1);
+      --dark-bg: #173e28;
+      --accent: #8cc63f;
+      --light-text: #f2e8cf;
+      --white: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.2);
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: 'Poppins', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      padding: 2rem 1rem;
+      background: var(--dark-bg);
+      color: var(--light-text);
+      line-height: 1.5;
     }
-
-    .container {
-      max-width: 850px;
-      margin: auto;
-    }
-
-    .brand {
+    .banner {
       text-align: center;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
+      padding: 3rem 1rem;
     }
-
-    .tagline {
+    .banner h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    .intro {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      padding: 0 1rem;
       text-align: center;
       font-size: 1.1rem;
-      color: var(--muted);
-      margin-bottom: 2rem;
     }
-
-    .menu-section {
-      background: var(--card-bg);
-      border-radius: 16px;
-      box-shadow: 0 6px 12px var(--shadow);
-      margin-bottom: 2.5rem;
-      overflow: hidden;
-      transition: transform .3s ease;
+    .intro p { margin-bottom: 1rem; }
+    .section {
+      padding: 2rem 1rem;
+      max-width: 850px;
+      margin: 0 auto;
     }
-
-    .menu-section:hover {
-      transform: scale(1.01);
-    }
-
-    .menu-section h2 {
-      background: var(--accent);
-      color: white;
-      padding: 1rem;
-      font-size: 1.4rem;
+    .section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
     }
-
-    .menu-items {
+    .items {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
-
-    .menu-item {
+    .item {
       display: flex;
-      justify-content: space-between;
-      padding: 0.9rem 1rem;
-      border-bottom: 1px solid #e6e6e6;
-      transition: background .2s;
+      background: var(--dark-bg);
+      border: 2px solid var(--accent);
+      border-radius: 16px;
+      box-shadow: 0 4px 8px var(--shadow);
+      overflow: hidden;
     }
-
-    .menu-item:last-child {
-      border-bottom: none;
+    .item-image {
+      flex-shrink: 0;
+      width: 140px;
+      height: 140px;
+      background: var(--accent);
+      border-top-left-radius: 14px;
+      border-bottom-left-radius: 14px;
     }
-
-    .menu-item:hover {
-      background: #f9f9f9;
+    .item-content {
+      padding: 1rem 1.5rem;
+      flex: 1;
     }
-
-    .menu-item .item {
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .menu-item .price {
-      color: var(--muted);
+    .item-content h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      color: var(--white);
       font-weight: 600;
     }
-
-    footer {
-      text-align: center;
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: var(--muted);
+    .item-content ul {
+      list-style: none;
+      padding-left: 0;
     }
-
-    @media (max-width: 500px) {
-      .menu-items {
-        grid-template-columns: 1fr;
-      }
+    .item-content ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .item-content ul li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--white);
+      font-size: 1.2rem;
+      line-height: 1;
+      top: 0;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="brand">BESFİT</div>
-    <div class="tagline">Sağlıklı ve Lezzetli Tercihler İçin</div>
+  <section class="banner">
+    <h1>Lezzetli ve Sağlıklı</h1>
+    <h1>BESFİT MENÜSÜ</h1>
+  </section>
 
-    <section class="menu-section">
-      <h2>Başlangıçlar</h2>
-      <div class="menu-items">
-        <div class="menu-item"><span class="item">Humus</span><span class="price">₺30</span></div>
-        <div class="menu-item"><span class="item">Sigara Böreği (5 Adet)</span><span class="price">₺25</span></div>
-        <div class="menu-item"><span class="item">Patates Kızartması</span><span class="price">₺20</span></div>
+  <section class="intro">
+    <p>🥦 Hoş Geldin BESFİT Ailesine! Burası sadece bir yemek noktası değil... Burası; sağlıklı seçimlerin, güçlü bedenlerin ve pozitif enerjinin birleştiği yer!</p>
+    <p>Her tabakta lezzet var, denge var, hedeflerine bir adım daha yaklaşma gücü var. İster formunu korumak iste, ister yeni bir başlangıç yap... Biz senin için buradayız!</p>
+    <p>🔄 Her lokmada yenilen. ⚡ Her öğünde güçlen. 💚 Her gün daha iyi hisset.</p>
+  </section>
+
+  <!-- Besfit Sade ve Protein Mix -->
+  <section class="section">
+    <h2>Besfit Sade & Protein Mix</h2>
+    <div class="items">
+      <div class="item">
+        <div class="item-image"></div>
+        <div class="item-content">
+          <h3>Besfit Sade</h3>
+          <ul>
+            <li>Portakal suyunda marine edilmiş tavuk (250g çiğ) harika bir tabak ile sağlık dengesi sağlıyor</li>
+            <li>~660 kcal</li>
+            <li>~59g protein</li>
+            <li>~65g karbonhidrat</li>
+          </ul>
+        </div>
       </div>
-    </section>
-
-    <section class="menu-section">
-      <h2>Çorbalar</h2>
-      <div class="menu-items">
-        <div class="menu-item"><span class="item">Mercimek Çorbası</span><span class="price">₺25</span></div>
-        <div class="menu-item"><span class="item">Domates Çorbası</span><span class="price">₺22</span></div>
-        <div class="menu-item"><span class="item">Yayla Çorbası</span><span class="price">₺28</span></div>
+      <div class="item">
+        <div class="item-image"></div>
+        <div class="item-content">
+          <h3>Besfit Protein Mix</h3>
+          <ul>
+            <li>Portakal suyunda marine edilmiş 3 çeşit tavuk (350g çiğ) harika bir tabak ile sağlık dengesi sağlıyor</li>
+            <li>~780 kcal</li>
+            <li>~80g protein</li>
+            <li>~65g karbonhidrat</li>
+          </ul>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="menu-section">
-      <h2>Ana Yemekler</h2>
-      <div class="menu-items">
-        <div class="menu-item"><span class="item">Izgara Tavuk Şiş</span><span class="price">₺60</span></div>
-        <div class="menu-item"><span class="item">Adana Kebap</span><span class="price">₺65</span></div>
-        <div class="menu-item"><span class="item">Sebzeli Lazanya</span><span class="price">₺55</span></div>
+  <!-- Salatalar -->
+  <section class="section">
+    <h2>Salatalar</h2>
+    <div class="items">
+      <div class="item">
+        <div class="item-image"></div>
+        <div class="item-content">
+          <h3>Besfit Çıtır Tavuk Salata</h3>
+          <ul>
+            <li>120g çıtır kaplamalı tavuk (fırınlanmış veya airfryer’da galeta unu/yulaf ezmesi ile kaplanmış)</li>
+            <li>40g karışık yeşillik (roka, marul, ıspanak)</li>
+            <li>40g cherry domates</li>
+            <li>40g salatalık</li>
+            <li>30g közlenmiş kırmızı biber</li>
+            <li>10g zeytinyağı</li>
+          </ul>
+          <ul>
+            <li>Enerji ~420 kcal</li>
+            <li>Protein ~32g</li>
+            <li>Karbonhidrat ~15g</li>
+            <li>Yağ ~25g</li>
+            <li>Lif ~4g</li>
+          </ul>
+        </div>
       </div>
-    </section>
-
-    <section class="menu-section">
-      <h2>Tatlılar</h2>
-      <div class="menu-items">
-        <div class="menu-item"><span class="item">Baklava</span><span class="price">₺35</span></div>
-        <div class="menu-item"><span class="item">Sütlaç</span><span class="price">₺30</span></div>
-        <div class="menu-item"><span class="item">Kazandibi</span><span class="price">₺32</span></div>
+      <div class="item">
+        <div class="item-image"></div>
+        <div class="item-content">
+          <h3>Besfit Humuslu Salata</h3>
+          <ul>
+            <li>50g humus</li>
+            <li>100g haşlanmış nohut</li>
+            <li>50g karışık yeşillik</li>
+            <li>30g salatalık</li>
+            <li>30g domates</li>
+            <li>20g rendelenmiş havuç</li>
+            <li>5g zeytinyağı</li>
+            <li>5g kabak çekirdeği</li>
+          </ul>
+          <ul>
+            <li>Enerji ~400 kcal</li>
+            <li>Protein ~14g</li>
+            <li>Karbonhidrat ~32g</li>
+            <li>Yağ ~22g</li>
+            <li>Lif ~9g</li>
+          </ul>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="menu-section">
-      <h2>İçecekler</h2>
-      <div class="menu-items">
-        <div class="menu-item"><span class="item">Ayran</span><span class="price">₺10</span></div>
-        <div class="menu-item"><span class="item">Kola (330 ml)</span><span class="price">₺15</span></div>
-        <div class="menu-item"><span class="item">Taze Sıkma Portakal Suyu</span><span class="price">₺25</span></div>
+  <!-- Denge Tabakları -->
+  <section class="section">
+    <h2>Denge Tabakları</h2>
+    <div class="items">
+      <div class="item">
+        <div class="item-image"></div>
+        <div class="item-content">
+          <h3>Besfit Fajita Durağı</h3>
+          <ul>
+            <li>Portakal suyunda marine edilmiş tavuk (250g çiğ) özel fajita sosu ile buluşuyor</li>
+            <li>~540 kcal</li>
+            <li>~53g protein</li>
+            <li>~65g karbonhidrat</li>
+          </ul>
+        </div>
       </div>
-    </section>
+      <div class="item">
+        <div class="item-image"></div>
+        <div class="item-content">
+          <h3>Besfit Zinde Mantar</h3>
+          <ul>
+            <li>Portakal suyunda marine edilmiş tavuk (300g çiğ) özel tavuk sosu ve mantar ile buluşuyor</li>
+            <li>~680 kcal</li>
+            <li>~70g protein</li>
+            <li>~65g karbonhidrat</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-      © 2025 BESFİT | Tüm hakları saklıdır.
-    </footer>
-  </div>
+  <!-- Ton Balık ve Akdeniz -->
+  <section class="section">
+    <h2>Salatalar & Special</h2>
+    <div class="items">
+      <div class="item">
+        <div class="item-image"></div>
+        <div class="item-content">
+          <h3>Besfit Tonbalık</h3>
+          <ul>
+            <li>Ton balık (160g), domates, salatalık, mısır, marul, lor peyniri, zeytinyağı ve limon ile eşsiz uyum</li>
+            <li>~205 kcal</li>
+            <li>~34g protein</li>
+            <li>~8.5g karbonhidrat</li>
+          </ul>
+        </div>
+      </div>
+      <div class="item">
+        <div class="item-image"></div>
+        <div class="item-content">
+          <h3>Besfit Akdeniz</h3>
+          <ul>
+            <li>Marine tavuk (120g), domates, salatalık, mısır, marul, lor peyniri, zeytinyağı ve limon ile harman</li>
+            <li>~205 kcal</li>
+            <li>~31g protein</li>
+            <li>~9g karbonhidrat</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
